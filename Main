@@ -1,0 +1,84 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package th4.b1;
+
+/**
+ *
+ * @author MSI-PC
+ */
+import java.util.ArrayList;
+import java.util.Scanner;
+ 
+public class Main {
+     public static void main(String[] args) {
+        ArrayList<GDN> arrGDN = new ArrayList<>();
+        ArrayList<GDĐ> arrGDĐ = new ArrayList<>();
+        int soGDĐ = 0, soGDN = 0;
+        long tongTienGDĐ = 0, trungBinhThanhTien = 0;
+        Scanner scanner = new Scanner(System.in);
+         
+        System.out.print("Nhập số giao dịch đất: ");
+        soGDĐ = scanner.nextInt();
+        System.out.print("Nhập số giao dịch nhà: ");
+        soGDN = scanner.nextInt();
+         
+        System.out.println("Nhập thông tin giao dịch đất:");
+        for (int i = 0; i < soGDĐ; i++) {
+            System.out.println("Nhập thông tin giao dịch đất thứ " + (i + 1) + ":");
+            GDĐ giaoDichDat = new GDĐ();
+            giaoDichDat.nhap();
+            arrGDĐ.add(giaoDichDat);
+        }
+         
+        System.out.println("Nhập thông tin giao dịch nhà:");
+        for (int i = 0; i < soGDN; i++) {
+            System.out.println("Nhập thông tin giao dịch nhà thứ " + (i + 1) + ":");
+            GDN giaoDichNha = new GDN();
+            giaoDichNha.nhap();
+            arrGDN.add(giaoDichNha);
+        }
+         
+        System.out.println("---Thông tin các giao dịch đất---");
+        for (int i = 0; i < arrGDN.size(); i++) {
+            System.out.println(arrGDĐ.get(i).toString());
+        }
+         
+        System.out.println("---Thông tin các giao dịch nhà---");
+        for (int i = 0; i < arrGDN.size(); i++) {
+            System.out.println(arrGDN.get(i).toString());
+        }
+         
+        for (int i = 0; i < arrGDĐ.size(); i++) {
+             if (arrGDĐ.get(i).getLoaiDat().equalsIgnoreCase("A")) {
+                tongTienGDĐ += arrGDĐ.get(i).getDonGia() * 
+                        arrGDĐ.get(i).getDienTich() * 1.5;
+            } else if (arrGDĐ.get(i).getLoaiDat().equalsIgnoreCase("B") || 
+                    arrGDĐ.get(i).getLoaiDat().equalsIgnoreCase("C")) {
+                tongTienGDĐ += arrGDĐ.get(i).getDienTich() * 
+                    arrGDĐ.get(i).getDonGia();
+            }
+        }
+        trungBinhThanhTien = tongTienGDĐ/ (arrGDĐ.size());
+        System.out.println("Trung bình thành tiền của giao dịch đất = " + trungBinhThanhTien);
+         
+        // xuất ra các giao dịch của tháng 9 năm 2013
+        System.out.println("Các giao dịch đất của tháng 9 năm 2013: ");
+        for (int i = 0; i < arrGDĐ.size(); i++) {
+            String[] dateGiaoDichDat = arrGDĐ.get(i).getNgayGiaoDich().split("/");
+            if (dateGiaoDichDat[1].equals("9") && dateGiaoDichDat[2].equals("2013")) {
+                System.out.println(arrGDĐ.get(i).toString());
+            }
+        }
+         
+        System.out.println("Các giao dịch nhà của tháng 9 năm 2013: ");
+        for (int i = 0; i < arrGDN.size(); i++) {
+            String[] dateGiaoDichNha = arrGDN.get(i).getNgayGiaoDich().split("/");
+            if (dateGiaoDichNha[1].equals("9") && dateGiaoDichNha[2].equals("2013")) {
+                System.out.println(arrGDN.get(i).toString());
+            }
+        }
+    }
+    
+}
