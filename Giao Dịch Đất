@@ -1,0 +1,43 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package th4.b1;
+
+/**
+ *
+ * @author MSI-Pc
+ */
+public class GDĐ extends GD {
+     private String loaiDat;
+ 
+    public GDĐ() {
+        super();
+    }
+ 
+    public GDĐ(String loaiDat) {
+        super();
+        this.loaiDat = loaiDat;
+    }
+ 
+    public String getLoaiDat() {
+        return loaiDat;
+    }
+ 
+    public void setLoaiDat(String loaiDat) {
+        this.loaiDat = loaiDat;
+    }
+     
+    public void nhap() {
+        super.nhap();
+        System.out.print("Nhập loại đất (A/B/C): ");
+        loaiDat = scanner.nextLine();
+    }
+ 
+    @Override
+    public String toString() {
+        return super.toString() + ", loại đất: " + this.loaiDat;
+    }
+
+    
+}
